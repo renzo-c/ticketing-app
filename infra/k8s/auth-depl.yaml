@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: rcnavarrop/auth
+          image: us.gcr.io/ticketing-dev-env-371920/auth
 ---
 # service definition
 apiVersion: v1
