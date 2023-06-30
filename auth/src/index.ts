@@ -1,7 +1,7 @@
 import express from "express";
 import "express-async-errors";
 import { json } from "body-parser";
-
+import 'express-async-errors'
 import mongoose from "mongoose";
 
 import { currentUserRouter } from "./current-user";

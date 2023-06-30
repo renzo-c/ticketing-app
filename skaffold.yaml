@@ -6,12 +6,12 @@ manifests:
 deploy:
   kubectl: {}
 build:
-  # local:
-  #   push: false
-  googleCloudBuild:
-    projectId: ticketing-dev-env-371920
+  local:
+    push: false
+  # googleCloudBuild:
+  #   projectId: ticketing-dev-env-371920
   artifacts:
-    - image: us.gcr.io/ticketing-dev-env-371920/auth
+    - image: rcnavarrop/auth
       context: auth
       docker:
         dockerfile: Dockerfile
