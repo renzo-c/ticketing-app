@@ -1,11 +1,15 @@
 import mongoose from "mongoose";
 import { Password } from "../services/password";
 
+// Interface that describes the properties
+// required to create a user
 interface UserAttrs {
   email: string;
   password: string;
 }
 
+// Interface that describes the properties
+// that a User Model has
 interface UserModel extends mongoose.Model<UserDoc> {
   build(attrs: UserAttrs): UserDoc;
 }
@@ -26,6 +30,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+// mongo middleware
 userSchema.pre("save", async function (done) {
   // - "this" represents the User Document that is being saved
   // - Conditional to avoid hashing a hashed password when
