@@ -1,8 +1,10 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import "express-async-errors";
 import { json } from "body-parser";
-import 'express-async-errors'
+import "express-async-errors";
 import mongoose from "mongoose";
+import cookieSession from "cookie-session";
+// import expressSession from "express-session";
 
 import { currentUserRouter } from "./current-user";
 import { signinRouter } from "./signin";
@@ -11,8 +13,22 @@ import { signupRouter } from "./signup";
 import { errorHandler } from "./middlewares/error-handlers";
 import { NotFoundError } from "./errors/not-found-error";
 
+type JWT = string;
+// Augment express-session with a custom SessionData object
+declare module "express-session" {
+  interface SessionData {
+    jwt: JWT
+  }
+}
+
 const app = express();
 app.use(json());
+app.use(
+  cookieSession({
+    secure: true,
+    signed: false,
+  }) as express.RequestHandler
+);
 
 app.use(currentUserRouter);
 app.use(signinRouter);
@@ -25,13 +41,16 @@ app.all("*", async () => {
 
 app.use(errorHandler);
 const startUp = async () => {
+  if (!process.env.JWT_KEY) {
+    throw new Error('JWT key must be defined');
+  }
   try {
     await mongoose.connect("mongodb://auth-mongo-srv:27017/auth");
   } catch (error) {
     console.error(error);
   }
   app.listen(3000, () => {
-    console.log('Connected to MongoDB')
+    console.log("Connected to MongoDB");
     console.log("Listening on port 3000! 💻");
   });
 };
