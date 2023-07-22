@@ -20,6 +20,9 @@ declare module "express-session" {
   interface SessionData {
     jwt: JWT,
   }
+  interface Session {
+    jwt: JWT,
+  }
 }
 
 declare module "express" {

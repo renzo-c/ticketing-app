@@ -1,5 +1,4 @@
 import express, { Request, Response } from "express";
-import { validateRequest } from "./middlewares/validate-requests";
 
 const router = express.Router();
 
