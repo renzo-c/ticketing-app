@@ -12,16 +12,25 @@ import { signoutRouter } from "./signout";
 import { signupRouter } from "./signup";
 import { errorHandler } from "./middlewares/error-handlers";
 import { NotFoundError } from "./errors/not-found-error";
+import { Session, SessionData } from "express-session";
 
 type JWT = string;
 // Augment express-session with a custom SessionData object
 declare module "express-session" {
   interface SessionData {
-    jwt: JWT
+    jwt: JWT,
+  }
+}
+
+declare module "express" {
+  interface Request {
+    session: Session & JWT | Partial<SessionData> | null
   }
 }
 
 const app = express();
+// Important so express process user's requests whose IP is behind a reversed proxy
+app.set('trust proxy', true);
 app.use(json());
 app.use(
   cookieSession({

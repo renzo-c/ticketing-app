@@ -5,14 +5,14 @@ const router = express.Router();
 
 router.get("/api/users/currentuser", (req, res) => {
   if (!req.session.jwt) {
-    return res.send({ currentUser: null });
+    return res.send({ currentUsert: null });
   }
 
   try {
     const payload = jwt.verify(req.session.jwt, process.env.JWT_KEY!);
     res.send({ currenUser: payload });  
 } catch (err) {
-    res.send({ currenUser: null });
+    res.send({ currenUserx: null });
   }
 });
 

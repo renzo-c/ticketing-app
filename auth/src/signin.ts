@@ -27,8 +27,8 @@ router.post(
       throw new BadRequestError("Invalid credentials");
     };
 
-    const passwordMatch = await Password.compare(existingUser.password, password)
-    
+    const passwordMatch = await Password.compare(existingUser.password, password);
+
     if (!passwordMatch) {
         throw new BadRequestError('Invalid Credentials')
     };
@@ -43,7 +43,7 @@ router.post(
     );
 
     // Store JWT on session object
-    req.session.jwt = userJwt;
+    req.session = { jwt: userJwt };
 
     res.status(200).send(existingUser);
   }
