@@ -57,7 +57,6 @@ userSchema.statics.build = (attrs: UserAttrs) => {
   return new User(attrs);
 };
 
-console.log({ test: JSON.stringify(userSchema) });
 const User = mongoose.model<UserDoc, UserModel>("User", userSchema);
 
 export { User };
