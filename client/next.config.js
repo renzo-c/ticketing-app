@@ -1,6 +1,6 @@
 module.exports = {
+  // pull all the different files inside the project directory each 300 ms
   webpack: (config) => {
-    // pull all the different files inside the project directory eash 300 ms
     config.watchOptions.poll = 300;
     return config;
   },
