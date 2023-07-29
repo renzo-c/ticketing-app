@@ -1,5 +1,31 @@
 import "bootstrap/dist/css/bootstrap.css";
+import buildClient from "../api/buildClient";
+import Header from "../Components/Header";
 
-export default ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
+const AppComponent = ({ Component, pageProps, currentUser }) => {
+  return (
+    <div>
+      <Header currentUser={currentUser} />
+      <Component {...pageProps} />
+    </div>
+  );
 };
+
+// Arguments provided to getInitialProps of CustomApp component (_app) are different ({req, res})
+// to the ones provided to getInitialProps of any other common page ({AppTree, Component, router, ctx: {req, res}})
+AppComponent.getInitialProps = async (appContext) => {
+  const client = buildClient(appContext.ctx);
+  const { data } = await client.get("/api/users/currentuser");
+
+  let pageProps = {};
+  if (appContext.Component.getInitialProps) {
+    pageProps = await appContext.Component.getInitialProps(appContext.ctx);
+  }
+  console.log({ data, pageProps });
+  return {
+    pageProps,
+    ...data,
+  };
+};
+
+export default AppComponent;
