@@ -15,7 +15,11 @@ spec:
       containers:
         - name: tickets
           image: rcnavarrop/tickets
+          # Environment variables definition section
           env:
+            - name: MONGO_URI
+            # Technically speaking, inside a mongodb DB, there can be multiple DBs (tickets)
+              value: 'mongodb://tickets-mongo-srv:27017/tickets'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
