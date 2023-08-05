@@ -2,8 +2,9 @@ import express from "express";
 import "express-async-errors";
 import { json } from "body-parser";
 import cookieSession from "cookie-session";
-import { errorHandler, NotFoundError } from "@rcnp-tickets/common";
+import { errorHandler, NotFoundError, currentUser } from "@rcnp-tickets/common";
 import { Session, SessionData } from "express-session";
+import { createTicketRouter } from "./routes/new";
 
 type JWT = string;
 // Augment express-session with a custom SessionData object
@@ -32,6 +33,9 @@ app.use(
     signed: false,
   }) as express.RequestHandler
 );
+
+app.use(currentUser);
+app.use(createTicketRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
