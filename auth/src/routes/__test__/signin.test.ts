@@ -12,7 +12,6 @@ it("fails when an email that does not exist is supplied", async () => {
 });
 
 it("fails when an incorrect password is supplied", async () => {
-  process.env.JWT_KEY = "jwt_for_test";
   await request(app)
     .post("/api/users/signup")
     .send({
@@ -30,7 +29,6 @@ it("fails when an incorrect password is supplied", async () => {
 });
 
 it("responds with a cookie when given valid credentials", async () => {
-  process.env.JWT_KEY = "jwt_for_test";
   await request(app)
     .post("/api/users/signup")
     .send({
