@@ -1297,10 +1297,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@rcnp-tickets/common@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@rcnp-tickets/common/-/common-1.0.5.tgz#64cfae6c6ed11b947b22f45c0daa99a998b626d7"
-  integrity sha512-QhUEuME4jQSzCtFkL54PgzgzfO3X0OKDD4nnyLiPrLUbJ5be5YWDPNrtwj4+GTceXN/1+ZpMQdNWoBCY2exyTw==
+"@rcnp-tickets/common@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@rcnp-tickets/common/-/common-1.0.6.tgz#f9af1eb5192da387f380bd9236826daf072edccc"
+  integrity sha512-abQ4ZcpCO84Mq6oEWUWjEaGN1hnQhHxNHOKy6YVZYzhVa/PqiZ0dplXkILbuVHYtyNuDo6hMmNTD8tvbRrh8+A==
   dependencies:
     "@types/express" "^4.17.14"
     cookie-session "^2.0.0"
@@ -4143,7 +4143,7 @@ typescript@^4.9.4:
 
 typescript@^5.1.6:
   version "5.1.6"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-5.1.6.tgz"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.1.6.tgz#02f8ac202b6dad2c0dd5e0913745b47a37998274"
   integrity sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==
 
 uid-safe@~2.1.5:

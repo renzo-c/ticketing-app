@@ -35,7 +35,7 @@ afterAll(async () => {
 global.signin = () => {
   // build the jwt payload (id and password)
   const payload = {
-    id: "thisIsUnsafe",
+    id: new mongoose.Types.ObjectId().toHexString(),
     password: "test123",
   };
   // create the jwt

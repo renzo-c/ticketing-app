@@ -6,6 +6,8 @@ import { errorHandler, NotFoundError, currentUser } from "@rcnp-tickets/common";
 import { Session, SessionData } from "express-session";
 import { createTicketRouter } from "./routes/new";
 import { showTicketRouter } from "./routes/show";
+import { indexTicketRouter } from "./routes";
+import { updatedTicketRouter } from "./routes/update";
 
 type JWT = string;
 // Augment express-session with a custom SessionData object
@@ -38,6 +40,8 @@ app.use(
 app.use(currentUser);
 app.use(createTicketRouter);
 app.use(showTicketRouter);
+app.use(indexTicketRouter);
+app.use(updatedTicketRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
