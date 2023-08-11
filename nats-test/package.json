@@ -1,0 +1,17 @@
+{
+  "name": "nats-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Renzo Navarro",
+  "license": "MIT",
+  "scripts": {
+    "npublish": "ts-node-dev --rs --notify false src/publisher.ts",
+    "nlisten": "ts-node-dev --rs --notify false src/listener.ts"
+  },
+  "dependencies": {
+    "@types/node": "^20.4.9",
+    "node-nats-streaming": "^0.3.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.1.6"
+  }
+}
