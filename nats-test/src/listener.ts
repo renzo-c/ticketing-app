@@ -8,11 +8,19 @@ const client = nats.connect("ticketing", randomBytes(4).toString("hex"), {
 console.clear();
 client.on("connect", () => {
   console.log("Listener connected to NATS");
+
+  client.on("close", () => {
+    console.log("NATS connection closed!");
+    process.exit();
+  });
+  // Set up specific options to change the subscription default behaviour
+  const options = client.subscriptionOptions().setManualAckMode(true);
   const subscription = client.subscribe(
     "ticket:created",
     // creating queue group to ensure that multiple instances of the same service
     // are not going to receive the same event
-    "orders-service-queue-group"
+    "orders-service-queue-group",
+    options
   );
   subscription.on("message", (msg: Message) => {
     const data = msg.getData();
@@ -20,5 +28,15 @@ client.on("connect", () => {
     if (typeof data === "string") {
       console.log(`Received event #${msg.getSequence()}, with data: ${data}`);
     }
+
+    // it's going to tell the node-nats-streaming library to reach back out
+    // to the nat-streaming server an tell it that we received the message
+    // and has been processed
+    msg.ack();
   });
 });
+
+// watcher for interrupt and terminate signals (do not kill this process just yet, let us close our connections)
+// needed for graceful restart but signal types not supporterd on Windows
+process.on("SIGINT", () => client.close());
+process.on("SIGTERM", () => client.close());
