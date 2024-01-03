@@ -1,7 +1,7 @@
 import "express-async-errors";
 import mongoose from "mongoose";
 import { app } from "./app";
-
+import { natsWrapper } from "../nats-wrapper";
 
 const startUp = async () => {
   if (!process.env.JWT_KEY) {
@@ -11,6 +11,20 @@ const startUp = async () => {
     throw new Error("MONGO_URI must be defined");
   }
   try {
+    await natsWrapper.connect(
+      "ticketing",
+      "random_user_id",
+      "http://nats-srv:4222" // url value from name of service in nats-depl
+    );
+
+    natsWrapper.client.on("close", () => {
+      console.log("NATS connection closed!");
+      process.exit();
+    });
+
+    process.on("SIGINT", () => natsWrapper.client.close());
+    process.on("SIGTERM", () => natsWrapper.client.close());
+
     await mongoose.connect(process.env.MONGO_URI);
   } catch (error) {
     console.error(error);
