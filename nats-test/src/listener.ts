@@ -15,14 +15,25 @@ client.on("connect", () => {
   });
   // Set up specific options to change the subscription default behaviour
   // setManualAckMode will let us handle the msg ack manually
-  const options = client.subscriptionOptions().setManualAckMode(true);
+  const options = client
+    .subscriptionOptions()
+    .setManualAckMode(true)
+    .setDeliverAllAvailable()
+    .setDurableName('accounting-service');
+  
   const subscription = client.subscribe(
     "ticket:created",
+    "queue-group-name",
+    // ensures that NATS does not remove the durable subscription group even if the connection is closed
     // creating queue group to ensure that multiple instances of the same service
     // are not going to receive the same event
-    "orders-service-queue-group",
     options
   );
+  // notice that setDeliverAllAvailable (to get all events delivered in the paset), 
+  // setDurableName (make sure that we keep tracking all events that have been delivered to this queue group even if it goes offline),
+  // and queue-group-name (make sure that durable subscription is not removed when services go offline), 
+  // meshed together really well with what we want to do (implement event concurrency control with event redelivery and durable subscriptions)
+  
   subscription.on("message", (msg: Message) => {
     const data = msg.getData();
 
