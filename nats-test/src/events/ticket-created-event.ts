@@ -1,4 +1,3 @@
-import { Interface } from "readline";
 import { Subjects } from "./subjects";
 
 export interface TicketCreatedEvent {
