@@ -6,6 +6,10 @@ declare global {
   var signin: () => string[];
 }
 
+// telling jest that we are mocking the file in this location
+// jest then will take the file located in the __mocks__ folder instead
+jest.mock("../nats-wrapper");
+
 let mongo: any;
 beforeAll(async () => {
   process.env.JWT_KEY = "asdaf";

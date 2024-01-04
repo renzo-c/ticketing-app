@@ -1,7 +1,7 @@
 import "express-async-errors";
 import mongoose from "mongoose";
 import { app } from "./app";
-import { natsWrapper } from "../nats-wrapper";
+import { natsWrapper } from "./nats-wrapper";
 
 const startUp = async () => {
   if (!process.env.JWT_KEY) {
