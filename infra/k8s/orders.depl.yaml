@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tickets-depl
+  name: orders-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tickets
+      app: orders
   template:
     metadata:
       labels:
-        app: tickets
+        app: orders
     spec:
       containers:
-        - name: tickets
-          image: rcnavarrop/tickets
+        - name: orders
+          image: rcnavarrop/orders
           # Environment variables definition section
           env:
+            # adopt unique id as name from pod name 
             - name: NATS_CLIENT_ID
               valueFrom:
                 fieldRef:
@@ -26,8 +27,8 @@ spec:
             - name: NATS_CLUSTER_ID
               value: "ticketing"
             - name: MONGO_URI
-              # Technically speaking, inside a mongodb DB, there can be multiple DBs (tickets)
-              value: "mongodb://tickets-mongo-srv:27017/tickets"
+              # Technically speaking, inside a mongodb DB, there can be multiple DBs (orders)
+              value: "mongodb://orders-mongo-srv:27017/orders"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
@@ -38,12 +39,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tickets-srv
+  name: orders-srv
 spec:
   selector:
-    app: tickets
+    app: orders
   ports:
-    - name: tickets
+    - name: orders
       protocol: TCP
       port: 3000
       targetPort: 3000
