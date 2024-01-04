@@ -4,10 +4,10 @@ import { json } from "body-parser";
 import cookieSession from "cookie-session";
 import { errorHandler, NotFoundError, currentUser } from "@rcnp-tickets/common";
 import { Session, SessionData } from "express-session";
-import { createTicketRouter } from "./routes/new";
-import { showTicketRouter } from "./routes/show";
-import { indexTicketRouter } from "./routes";
-import { updatedTicketRouter } from "./routes/update";
+import { indexOrderRouter } from "./routes/index";
+import { newOrderRouter } from "./routes/new";
+import { showOrderRouter } from "./routes/show";
+import { deleteOrderRouter } from "./routes/delete";
 
 type JWT = string;
 // Augment express-session with a custom SessionData object
@@ -38,10 +38,10 @@ app.use(
 );
 
 app.use(currentUser);
-app.use(createTicketRouter);
-app.use(showTicketRouter);
-app.use(indexTicketRouter);
-app.use(updatedTicketRouter);
+app.use(indexOrderRouter);
+app.use(newOrderRouter);
+app.use(showOrderRouter);
+app.use(deleteOrderRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
