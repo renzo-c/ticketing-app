@@ -20,6 +20,7 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
+  jest.clearAllMocks(); // to ensure that new assertions will not be polluted with results from previous tests, like toHaveBeenCalled assertion.
   const collections = await mongoose.connection.db.collections();
   for (let collection of collections) {
     await collection.deleteMany({});

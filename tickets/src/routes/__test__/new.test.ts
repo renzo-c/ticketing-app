@@ -1,6 +1,9 @@
 import request from "supertest";
 import { app } from "../../app";
 import { Ticket } from "../../models/ticket";
+// even though we are importing the real one,
+// it is going to call the fake one because it was mocked in the setup file
+import { natsWrapper } from "../../nats-wrapper";
 
 it("has a route handler listening to /api/tickets for post requests", async () => {
   const response = await request(app).post("/api/tickets").send({});
@@ -65,4 +68,15 @@ it("creates a ticket with valid inputs", async () => {
   expect(tickets.length).toEqual(1);
   expect(tickets[0].title).toEqual("This is a title");
   expect(tickets[0].price).toEqual(50);
+});
+
+it("publishes an event", async () => {
+  await request(app)
+    .post("/api/tickets")
+    .set("Cookie", global.signin())
+    .send({ title: "This is a title", price: 50 })
+    .expect(201);
+
+  // console.log(natsWrapper);
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
 });
