@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 import { OrderStatus } from "@rcnp-tickets/common";
 import { TicketDoc } from "./ticket";
 
+// So we can import everything about orders 
+//to any file inside order service that requires it
+export { OrderStatus }; 
+
 interface OrderAttrs {
   userId: string;
   status: OrderStatus;
