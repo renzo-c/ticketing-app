@@ -17,6 +17,11 @@ export interface TicketDoc extends mongoose.Document {
 
 interface TicketModel extends mongoose.Model<TicketDoc> {
   build(attrs: TicketAttrs): TicketDoc;
+  // looks for existence of previous event with a version number value lesser in one unit
+  findByEvent(event: {
+    id: string;
+    version: number;
+  }): Promise<TicketDoc | null>;
 }
 
 const ticketSchema = new mongoose.Schema(
@@ -43,6 +48,13 @@ const ticketSchema = new mongoose.Schema(
 
 ticketSchema.set("versionKey", "version");
 ticketSchema.plugin(updateIfCurrentPlugin);
+
+ticketSchema.statics.findByEvent = (data: { id: string; version: number }) => {
+  return Ticket.findOne({
+    _id: data.id,
+    version: data.version - 1,
+  });
+};
 
 ticketSchema.statics.build = (attrs: TicketAttrs) => {
   return new Ticket({
