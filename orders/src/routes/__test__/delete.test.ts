@@ -55,7 +55,7 @@ it("emits an order cancelled event", async () => {
     .expect(204);
 
   // expectation to make sure the thing is cancelled
-  const updatedOrder = await Order.findById(order.id);
+  await Order.findById(order.id);
 
   expect(natsWrapper.client.publish).toHaveBeenCalled();
 });
