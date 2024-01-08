@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 import { OrderStatus } from "@rcnp-tickets/common";
 import { TicketDoc } from "./ticket";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
-// So we can import everything about orders 
+// So we can import everything about orders
 //to any file inside order service that requires it
-export { OrderStatus }; 
+export { OrderStatus };
 
 interface OrderAttrs {
   userId: string;
@@ -54,6 +55,9 @@ const orderSchema = new mongoose.Schema(
     },
   }
 );
+
+orderSchema.set("versionKey", "version");
+orderSchema.plugin(updateIfCurrentPlugin);
 
 orderSchema.statics.build = (attrs: OrderAttrs) => {
   return new Order(attrs);
