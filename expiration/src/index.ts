@@ -1,4 +1,3 @@
-import "express-async-errors";
 import { natsWrapper } from "./nats-wrapper";
 
 const startUp = async () => {
