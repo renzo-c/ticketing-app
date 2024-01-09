@@ -587,10 +587,10 @@
   resolved "https://registry.yarnpkg.com/@msgpackr-extract/msgpackr-extract-win32-x64/-/msgpackr-extract-win32-x64-3.0.2.tgz#0f164b726869f71da3c594171df5ebc1c4b0a407"
   integrity sha512-O+6Gs8UeDbyFpbSh2CPEz/UOrrdWPTBYNblZK5CxxLisYt4kGX3Sc+czffFonyjiGSq3jWLwJS/CCJc7tBr4sQ==
 
-"@rcnp-tickets/common@^1.0.12":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@rcnp-tickets/common/-/common-1.0.12.tgz#293a7c72822161d7f2d4031bd8eb99c129763bbd"
-  integrity sha512-9FfyyTllCMZa8KkwExaqpDQZs8JOLgf52PFN8t4bnV9VKgfLVBZnQB4hCmubQFfP0XiHEbprgfF6a2x86SVEWQ==
+"@rcnp-tickets/common@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@rcnp-tickets/common/-/common-1.0.13.tgz#b33eaea5a61a97627dbfcc3c5824646cb5d8d9ae"
+  integrity sha512-wA2nyWFokfcUg3x8/frynAGYCehzLKTCG8uYtsHcXYDtaRY/15KZKKCG6oB6huG71Moj53GFSpRC6LgXimwUcQ==
   dependencies:
     "@types/express" "^4.17.14"
     cookie-session "^2.0.0"
@@ -764,9 +764,9 @@
   integrity sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==
 
 "@types/node@*":
-  version "20.10.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.10.7.tgz#40fe8faf25418a75de9fe68a8775546732a3a901"
-  integrity sha512-fRbIKb8C/Y2lXxB5eVMj4IU7xpdox0Lh8bUPEdtLysaylsml1hOOx1+STloRs/B9nf7C6kPRmmg/V7aQW7usNg==
+  version "20.10.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.10.8.tgz#f1e223cbde9e25696661d167a5b93a9b2a5d57c7"
+  integrity sha512-f8nQs3cLxbAFc00vEU59yf9UyGUftkPaLGfvbVOIDdx2i1b8epBqj2aNGyP19fiyXWvlmZ7qC1XLjAzw/OKIeA==
   dependencies:
     undici-types "~5.26.4"
 
