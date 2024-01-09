@@ -1323,10 +1323,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@rcnp-tickets/common@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@rcnp-tickets/common/-/common-1.0.11.tgz#af7f5097fc8e7650ed03c38c5c873c2fd7e82875"
-  integrity sha512-9xSmRThfC3ZuHYrKM4NG7vjfwi5jX2bNsHCoNTBjniSITTDENV8gV7IQBOxm24/SP1E8g42DEvtoxXqKyyotLg==
+"@rcnp-tickets/common@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@rcnp-tickets/common/-/common-1.0.12.tgz#293a7c72822161d7f2d4031bd8eb99c129763bbd"
+  integrity sha512-9FfyyTllCMZa8KkwExaqpDQZs8JOLgf52PFN8t4bnV9VKgfLVBZnQB4hCmubQFfP0XiHEbprgfF6a2x86SVEWQ==
   dependencies:
     "@types/express" "^4.17.14"
     cookie-session "^2.0.0"
