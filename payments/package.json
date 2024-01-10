@@ -1,0 +1,40 @@
+{
+  "name": "payments",
+  "dependencies": {
+    "@rcnp-tickets/common": "^1.0.12",
+    "@types/express": "^4.17.14",
+    "cookie-session": "^2.0.0",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^6.8.1",
+    "mongoose-update-if-current": "^1.4.0",
+    "node-nats-streaming": "^0.3.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
+  },
+  "scripts": {
+    "start": "ts-node-dev src/index.ts",
+    "test": "jest --watchAll --no-cache"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "./src/test/setup.ts"
+    ]
+  },
+  "devDependencies": {
+    "@types/cookie-session": "^2.0.44",
+    "@types/express-session": "^1.17.7",
+    "@types/jest": "^29.5.3",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/supertest": "^2.0.12",
+    "jest": "29.5.0",
+    "mongodb-memory-server": "^8.13.0",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.1"
+  }
+}
