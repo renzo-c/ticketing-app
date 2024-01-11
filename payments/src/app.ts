@@ -4,7 +4,7 @@ import { json } from "body-parser";
 import cookieSession from "cookie-session";
 import { errorHandler, NotFoundError, currentUser } from "@rcnp-tickets/common";
 import { Session, SessionData } from "express-session";
-
+import { createChargeRouter } from "./routes/new";
 
 type JWT = string;
 // Augment express-session with a custom SessionData object
@@ -35,6 +35,7 @@ app.use(
 );
 
 app.use(currentUser);
+app.use(createChargeRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
