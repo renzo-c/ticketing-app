@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 
 declare global {
-  var signin: () => string[];
+  var signin: (id?: string) => string[];
 }
 
 // telling jest that we are mocking the file in this location
@@ -37,10 +37,10 @@ afterAll(async () => {
 // Overall purpose of this function is to create a cookie
 // Unlike in auth service, we do not have the signup endpoint available.
 // Then we are creating our own cookie from scratch.
-global.signin = () => {
+global.signin = (id?: string) => {
   // build the jwt payload (id and password)
   const payload = {
-    id: new mongoose.Types.ObjectId().toHexString(),
+    id: id || new mongoose.Types.ObjectId().toHexString(),
     password: "test123",
   };
   // create the jwt
