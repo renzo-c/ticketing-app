@@ -1,7 +1,7 @@
 {
   "name": "payments",
   "dependencies": {
-    "@rcnp-tickets/common": "^1.0.12",
+    "@rcnp-tickets/common": "^1.0.14",
     "@types/express": "^4.17.14",
     "cookie-session": "^2.0.0",
     "dotenv": "^16.3.1",
