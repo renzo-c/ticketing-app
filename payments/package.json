@@ -4,6 +4,7 @@
     "@rcnp-tickets/common": "^1.0.12",
     "@types/express": "^4.17.14",
     "cookie-session": "^2.0.0",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
     "express-session": "^1.17.3",
@@ -12,6 +13,7 @@
     "mongoose": "^6.8.1",
     "mongoose-update-if-current": "^1.4.0",
     "node-nats-streaming": "^0.3.2",
+    "stripe": "^14.11.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.9.4"
   },
