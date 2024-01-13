@@ -23,6 +23,7 @@ export class PaymentCreatedListener extends Listener<PaymentCreatedEvent> {
     order.set({
       status: OrderStatus.Complete,
     });
+    await order.save();
     // technically speaking we would have had to emit an order update event
     // so the order version gets updated in every service. However, we are not
     // doing that for a matter of simplicity, backed up on the fact that after
