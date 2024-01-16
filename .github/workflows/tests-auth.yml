@@ -1,4 +1,5 @@
-name: tests
+# test file is created in all different services to run tests in parallel 
+name: tests-auth
 
 on:
   pull_request
