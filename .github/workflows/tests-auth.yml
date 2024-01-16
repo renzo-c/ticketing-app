@@ -1,8 +1,13 @@
-# test file is created in all different services to run tests in parallel 
+# test file is created in all different services to run tests in parallel
 name: tests-auth
 
+# if there is a new pull request or a pull request gets reopen
+# and and the files changes are located in '<serviceName>/**'
+# then run this specified job
 on:
-  pull_request
+  pull_request:
+    paths:
+      - "auth/**"
 
 jobs:
   build:
