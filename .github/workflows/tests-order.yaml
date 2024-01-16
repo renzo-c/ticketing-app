@@ -1,0 +1,12 @@
+# test file is created in all different services to run tests in parallel 
+name: tests-orders
+
+on:
+  pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd orders && npm install && npm run test:ci
