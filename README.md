@@ -23,3 +23,9 @@ kubectl get services -n <namespace>
 kubectl create secret generic [name_in_kubectl]-secret --from-literal [NAME_KEY]=[password]
 
 i.e: kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=[password]
+
+## Show kubernetes config (including contexts)
+kubectl config view
+
+## Switch among kubernetes contexts
+kubectl config use-context [context_name]
