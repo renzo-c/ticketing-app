@@ -7,7 +7,6 @@ declare global {
   var signin: (id?: string) => string[];
 }
 
-console.log(process.env.STRIPE_KEY)
 // telling jest that we are mocking the file in this location
 // jest then will take the file located in the __mocks__ folder instead
 jest.mock("../nats-wrapper");
