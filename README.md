@@ -3,19 +3,20 @@
 Ticketing app implemented with microservices. Based on Stephen Grider's Microservices with Node JS and React course
 
 ## Tools:
-Frontend: Next.Js (React.Js)
-Backend: Node.Js + Express, Mongoose, Typescript
-Database: MongoDB
-Microservices: NATS streaming
-Testing: Jest
+- Frontend: Next.Js (React.Js)
+- Backend: Node.Js + Express, Mongoose, Typescript
+- Database: MongoDB
+- Microservices: NATS streaming
+- Testing: Jest
 
 ## Key takeaways
 - Planning for handlers and multi-layer abstractions in the backend
-- Microservise architecture
+- Implemention of listeners and publishers in NATs Microservice architecture
+- Publish NPM library with common pieces of code. [Link](https://github.com/renzo-c/ticketing-common)
 - Stripe API integration
 - Shared real-world perspectives on constructing highly scalable backend components
 - Addressing transaction concurrency issues through the optimistic concurrency control (OCC) approach.
-- Implementation of CI/CD workflow 
+- Implementation of CI/CD workflow
 
 ## Helpful links and commands
 
