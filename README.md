@@ -12,7 +12,7 @@ Ticketing app implemented with microservices. Based on Stephen Grider's Microser
 ## Key takeaways
 - Planning for handlers and multi-layer abstractions in the backend
 - Implemention of listeners and publishers in NATs Microservice architecture
-- Publish NPM library with common pieces of code. [Link](https://github.com/renzo-c/ticketing-common)
+- Publish NPM library with common pieces of code (middlewares, error definitios and handlers). [Link](https://github.com/renzo-c/ticketing-common)
 - Stripe API integration
 - Shared real-world perspectives on constructing highly scalable backend components
 - Addressing transaction concurrency issues through the optimistic concurrency control (OCC) approach.
